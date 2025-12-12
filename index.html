@@ -6,28 +6,39 @@
     <title>Web To Lead Form</title>
     <link rel="stylesheet" href="style.css">
     <script src="script.js"></script>
+    <script src="https://www.google.com/recaptcha/api.js"></script>
 </head>
 <body>
 
     <h1>CREATE LEAD</h1>
 
-<form action="https://webto.salesforce.com/servlet/servlet.WebToLead?encoding=UTF-8&orgId=00DgK000003GTab" method="POST">
+    <form 
+        action="https://webto.salesforce.com/servlet/servlet.WebToLead?encoding=UTF-8&orgId=00DgK000003GTab" 
+        method="POST" 
+        onsubmit="return beforesubmit()"
+    >
 
-<input type=hidden name="oid" value="00DgK000003GTab">
-<input type=hidden name="retURL" value="https://harshtahi.github.io/WebToLeadProject/thanks.html">
 
-<label for="first_name">First Name</label><input  id="first_name" maxlength="40" name="first_name" size="20" type="text" /><br>
+        <input type=hidden name='captcha_settings' value='{"keyname":"WebtoLeadProj","fallback":"true","orgId":"00DgK000003GTab","ts":""}'>
+        <input type="hidden" name="oid" value="00DgK000003GTab">
+        <input type="hidden" name="retURL" value="https://trailhead.salesforce.com">
+        <input type="hidden" name="Lead_Date__c" class="outputdate">
 
-<label for="last_name">Last Name</label><input  id="last_name" maxlength="80" name="last_name" size="20" type="text" /><br>
+        <label for="first_name">First Name</label>
+        <input placeholder="First Name" id="first_name" maxlength="40" name="first_name" type="text" required><br>
 
-<label for="email">Email</label><input  id="email" maxlength="80" name="email" size="20" type="text" /><br>
+        <label for="last_name">Last Name</label>
+        <input placeholder="Last Name" id="last_name" maxlength="80" name="last_name" type="text" required><br>
 
-Lead_Date:<span class="dateInput dateOnlyInput"><input  id="00NgK00002grdEv" name="00NgK00002grdEv" size="12" type="text" /></span><br>
+        <label for="email">Email</label>
+        <input placeholder="Email" id="email" maxlength="80" name="email" type="email" required><br>
 
-<input type="submit" name="submit">
+        <label for="lead_date_input">Lead Date</label>
+        <input id="lead_date_input" type="date" class="inputdate" required><br>
 
-</form>
-
+        <input type="submit" name="submit" class="submit">
+    </form>
 
 </body>
 </html>
+
